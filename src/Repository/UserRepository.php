@@ -20,5 +20,15 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, Users::class);
     }
 
-    // Métodos adicionales del repositorio si los necesitas
+    /**
+     * Busca un usuario por correo electrónico y contraseña.
+     *
+     * @param string $email Correo electrónico del usuario.
+     * @param string $password Contraseña del usuario.
+     * @return Users|null El usuario encontrado o null si no se encuentra.
+     */
+    public function findOneByEmailAndPassword(string $email, string $password): ?Users
+    {
+        return $this->findOneBy(['correo' => $email, 'pass' => $password]);
+    }
 }
