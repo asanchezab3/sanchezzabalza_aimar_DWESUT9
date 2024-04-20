@@ -2,43 +2,35 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\Table(name="users")
- */
-class User
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+class Users
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
+    #[ORM\Column(type: Types::STRING, length: 100)]
     private $nombre;
 
-    /**
-     * @ORM\Column(name="apellido1", type="string", length=100)
-     */
+    #[ORM\Column(type: Types::STRING, length: 100)]
     private $apellido1;
 
-    /**
-     * @ORM\Column(name="apellido2", type="string", length=100)
-     */
+    #[ORM\Column(type: Types::STRING, length: 100)]
     private $apellido2;
 
-    /**
-     * @ORM\Column(type="string", length=150)
-     */
+    #[ORM\Column(type: Types::STRING, length: 100)]
     private $correo;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
+    #[ORM\Column(type: Types::STRING, length: 100)]
     private $pass;
 
     public function getId(): ?int
